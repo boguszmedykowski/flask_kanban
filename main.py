@@ -1,8 +1,16 @@
 import flet as ft
 
-
 def main(page: ft.Page):
-    page.add(ft.Text(value="Hello, world!"))
+    chat = ft.Column()
+    new_message = ft.TextField()
 
+    def send_click(e):
+        chat.controls.append(ft.Text(new_message.value))
+        new_message.value = ""
+        page.update()
 
-ft.app(target=main)
+    page.add(
+        chat, ft.Row(controls=[new_message, ft.ElevatedButton("Send", on_click=send_click)])
+    )
+
+ft.app(main, view=ft.AppView.WEB_BROWSER)
