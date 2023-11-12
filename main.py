@@ -50,6 +50,7 @@ class ChatMessage(ft.Row):
 def main(page: ft.Page):
     page.horizontal_alignment = "stretch"
     page.title = "Flet Chat"
+    page.update()
 
     def join_chat_click(e):
         if not join_user_name.value:
