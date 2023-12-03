@@ -49,23 +49,29 @@ def index():
 # Dodawanie transakcji
 
 
-@app.route('/add_transaction', methods=['POST'])
+@app.route('/add_transaction', methods=['GET', 'POST'])
 def add_transaction():
-    try:
-        title = request.form['title']
-        amount = float(request.form['amount'])
-        type = TransactionType(request.form['type'])
+    if request.method == 'POST':
+        try:
+            title = request.form['title']
+            amount = float(request.form['amount'])
+            type = TransactionType(request.form['type'])
 
-        new_transaction = Transaction(title=title, amount=amount, type=type)
-        db.session.add(new_transaction)
-        db.session.commit()
-    except SQLAlchemyError as e:
-        print(f"Error: {e}")
-        db.session.rollback()
-    except ValueError:
-        print("Invalid data")
+            new_transaction = Transaction(
+                title=title, amount=amount, type=type)
+            db.session.add(new_transaction)
+            db.session.commit()
+        except SQLAlchemyError as e:
+            print(f"Error: {e}")
+            db.session.rollback()
+        except ValueError:
+            print("Invalid data")
 
-    return redirect(url_for('index'))
+        return redirect(url_for('index'))
+
+    # Obsługa żądań GET
+    return render_template('add_transaction.html')
+
 
 # Usuwanie transakcji
 
