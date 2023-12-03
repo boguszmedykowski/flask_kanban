@@ -1,7 +1,9 @@
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request, redirect, url_for, Response
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.exc import SQLAlchemyError
 from enum import Enum
+import io
+import csv
 
 # Konfiguracja aplikacji
 
@@ -65,6 +67,8 @@ def add_transaction():
 
     return redirect(url_for('index'))
 
+# Usuwanie transakcji
+
 
 @app.route('/delete_transaction/<int:transaction_id>', methods=['POST'])
 def delete_transaction(transaction_id):
@@ -78,6 +82,8 @@ def delete_transaction(transaction_id):
         db.session.rollback()
 
     return redirect(url_for('index'))
+
+# Edycja transakcji
 
 
 @app.route('/edit_transaction/<int:transaction_id>', methods=['GET', 'POST'])
@@ -98,6 +104,8 @@ def edit_transaction(transaction_id):
 
     return render_template('edit_transaction.html', transaction=transaction)
 
+# Podsumowanie finansowe
+
 
 @app.route('/summary')
 def summary():
@@ -106,6 +114,8 @@ def summary():
     total_income = db.session.query(db.func.sum(Transaction.amount)).filter(
         Transaction.type == TransactionType.INCOME).scalar()
     return render_template('summary.html', total_expense=total_expense, total_income=total_income)
+
+# Filtracja transakcji
 
 
 @app.route('/filter_transactions', methods=['GET', 'POST'])
@@ -117,6 +127,22 @@ def filter_transactions():
         return render_template('index.html', transactions=filtered_transactions)
 
     return render_template('filter_transactions.html')
+
+# Eksport danych
+
+
+@app.route('/export_transactions')
+def export_transactions():
+    transactions = Transaction.query.all()
+    si = io.StringIO()
+    cw = csv.writer(si)
+    cw.writerow(['ID', 'Title', 'Amount', 'Type'])
+    for transaction in transactions:
+        cw.writerow([transaction.id, transaction.title,
+                    transaction.amount, transaction.type.value])
+
+    output = si.getvalue()
+    return Response(output, mimetype='text/csv', headers={"Content-Disposition": "attachment;filename=transactions.csv"})
 
 
 if __name__ == '__main__':
