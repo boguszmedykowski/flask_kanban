@@ -108,5 +108,16 @@ def summary():
     return render_template('summary.html', total_expense=total_expense, total_income=total_income)
 
 
+@app.route('/filter_transactions', methods=['GET', 'POST'])
+def filter_transactions():
+    if request.method == 'POST':
+        transaction_type = request.form['type']
+        filtered_transactions = Transaction.query.filter(
+            Transaction.type == TransactionType(transaction_type)).all()
+        return render_template('index.html', transactions=filtered_transactions)
+
+    return render_template('filter_transactions.html')
+
+
 if __name__ == '__main__':
     app.run(debug=True)
