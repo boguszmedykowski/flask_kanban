@@ -80,5 +80,24 @@ def delete_transaction(transaction_id):
     return redirect(url_for('index'))
 
 
+@app.route('/edit_transaction/<int:transaction_id>', methods=['GET', 'POST'])
+def edit_transaction(transaction_id):
+    transaction = Transaction.query.get_or_404(transaction_id)
+    if request.method == 'POST':
+        try:
+            transaction.title = request.form['title']
+            transaction.amount = float(request.form['amount'])
+            transaction.type = TransactionType(request.form['type'])
+            db.session.commit()
+            return redirect(url_for('index'))
+        except SQLAlchemyError as e:
+            print(f"Error: {e}")
+            db.session.rollback()
+        except ValueError:
+            print("Invalid data")
+
+    return render_template('edit_transaction.html', transaction=transaction)
+
+
 if __name__ == '__main__':
     app.run(debug=True)
