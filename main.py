@@ -66,5 +66,19 @@ def add_transaction():
     return redirect(url_for('index'))
 
 
+@app.route('/delete_transaction/<int:transaction_id>', methods=['POST'])
+def delete_transaction(transaction_id):
+    try:
+        transaction = Transaction.query.get(transaction_id)
+        if transaction:
+            db.session.delete(transaction)
+            db.session.commit()
+    except SQLAlchemyError as e:
+        print(f"Error: {e}")
+        db.session.rollback()
+
+    return redirect(url_for('index'))
+
+
 if __name__ == '__main__':
     app.run(debug=True)
