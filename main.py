@@ -99,5 +99,14 @@ def edit_transaction(transaction_id):
     return render_template('edit_transaction.html', transaction=transaction)
 
 
+@app.route('/summary')
+def summary():
+    total_expense = db.session.query(db.func.sum(Transaction.amount)).filter(
+        Transaction.type == TransactionType.EXPENSE).scalar()
+    total_income = db.session.query(db.func.sum(Transaction.amount)).filter(
+        Transaction.type == TransactionType.INCOME).scalar()
+    return render_template('summary.html', total_expense=total_expense, total_income=total_income)
+
+
 if __name__ == '__main__':
     app.run(debug=True)
