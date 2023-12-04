@@ -122,6 +122,12 @@ def login():
 def dashboard():
      return render_template('dashboard.html')
 
+@app.route('/logout', methods=['GET', 'POST'])
+@login_required
+def logout():
+     logout_user()
+     return redirect(url_for('login'))
+
 @app.route('/add_transaction', methods=['GET', 'POST'])
 def add_transaction():
     if request.method == 'POST':
