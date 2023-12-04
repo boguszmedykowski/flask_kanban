@@ -6,10 +6,9 @@
 4. uruchom program - `python main.py` (lub `python3` w zależności od wersji)
 
 zadanie:
-utwórz nowy branch
-`git switch -c nazwa_brancha`
-utwórz plik w katalogu _/template/index.html_
-`git add .`
-`git commit -m "tresc commitów"`
-`git push origin nazwa_brancha` (jeśli wysłałeś mi klucze ssh)
-zmerguj branch
+* utwórz nowy branch - `git switch -b nazwa_brancha`
+* utwórz plik w katalogu _/template/index.html_
+* `git add .`
+* `git commit -a -m "tresc commitów"`
+* `git push origin nazwa_brancha` (jeśli wysłałeś mi klucze ssh)
+* zmerguj branch
