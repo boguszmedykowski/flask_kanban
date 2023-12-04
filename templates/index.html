@@ -2,42 +2,25 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Budget App</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    
+    <title>Budget App</title>
+    <!-- <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='images/favicon.ico') }}"/>   -->
+    
+    <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"> -->
+    
+
 </head>
 <body>
     <h1>Budget App</h1>
-    <h2>Transakcje</h2>
-    <table>
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Tytuł</th>
-                <th>Kwota</th>
-                <th>Typ</th>
-                <th>Akcje</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for transaction in transactions %}
-                <tr>
-                    <td>{{ transaction.id }}</td>
-                    <td>{{ transaction.title }}</td>
-                    <td>{{ transaction.amount }}</td>
-                    <td>{{ transaction.type.value }}</td>
-                    <td>
-                        <a href="{{ url_for('edit_transaction', transaction_id=transaction.id) }}">Edytuj</a>
-                        <form method="post" action="{{ url_for('delete_transaction', transaction_id=transaction.id) }}">
-                            <button type="submit">Usuń</button>
-                        </form>
-                    </td>
-                </tr>
-            {% endfor %}
-        </tbody>
-    </table>
-    <a href="{{ url_for('filter_transactions') }}">Filtruj transakcje</a>
-    <a href="{{ url_for('summary') }}">Podsumowanie finansowe</a>
-    <a href="{{ url_for('export_transactions') }}">Eksportuj transakcje</a>
-    <a href="{{ url_for('add_transaction') }}">Dodaj nową transakcję</a>
+    
+    <h3>
+        <div style="text-align: center;">
+            <a href="{{url_for('login')}}" style="display: inline-block; max-width: 350px; text-align: center; padding: 15px 75px; cursor: pointer;color: white ;background-color: #333; font-size: 30px; font-weight: 500; text-decoration: none; word-wrap: break-word" onmouseover="this.style.color='#F17272'" onmouseout="this.style.color='white'">ZALOGUJ, by zobaczyć stan portfela</a>
+        </div>
+    </h3>
+    
 </body>
 </html>
