@@ -7,9 +7,9 @@
 
 zadanie:
 utwórz nowy branch
-`git switch -c _nazwa_brancha_`
+`git switch -c nazwa_brancha`
 utwórz plik w katalogu _/template/index.html_
 `git add .`
-`git commit -m` `_"tresc commitów"_`
-`git push origin _nazwa_brancha_` (jeśli wysłałeś mi klucze ssh)
+`git commit -m "tresc commitów"`
+`git push origin nazwa_brancha` (jeśli wysłałeś mi klucze ssh)
 zmerguj branch
