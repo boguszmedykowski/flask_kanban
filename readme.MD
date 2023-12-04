@@ -5,7 +5,7 @@
 3. zainstaluj zależności (`pip install requirements.txt`)
 4. uruchom program - `python main.py` (lub `python3` w zależności od wersji)
 
-zadanie:
+### Zadanie:
 * utwórz nowy branch - `git switch -b nazwa_brancha`
 * utwórz plik w katalogu _/template/index.html_
 * `git add .`
