@@ -10,6 +10,6 @@ utwórz nowy branch
 `git switch -c _nazwa_brancha_`
 utwórz plik w katalogu _/template/index.html_
 `git add .`
-`git commit -m _"tresc commitów"_`
+`git commit -m` `_"tresc commitów"_`
 `git push origin _nazwa_brancha_` (jeśli wysłałeś mi klucze ssh)
 zmerguj branch
