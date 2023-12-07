@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edycja transakcji</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Edycja transakcji</h1>
+    <form method="post">
+        <label for="title">Tytuł:</label>
+        <input type="text" id="title" name="title" value="{{ transaction.title }}" required>
+        
+        <label for="amount">Kwota:</label>
+        <input type="number" id="amount" name="amount" value="{{ transaction.amount }}" step="0.01" required>
+        
+        <label for="type">Typ:</label>
+        <select id="type" name="type">
+            <option value="Expense" {% if transaction.type == "Expense" %}selected{% endif %}>Wydatek</option>
+            <option value="Income" {% if transaction.type == "Income" %}selected{% endif %}>Przychód</option>
+        </select>
+        
+        <button type="submit">Zapisz zmiany</button>
+    </form>
+    <a href="{{ url_for('dashboard') }}">Powrót do transakcji</a>
+</body>
+</html>

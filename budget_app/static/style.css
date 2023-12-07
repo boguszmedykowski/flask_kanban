@@ -1,0 +1,85 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap');
+
+/* Resetowanie domyślnych stylów */
+body, h1, h2, p, ul, li, form {
+    margin: 0;
+    padding: 0;
+}
+
+/* Ustawienie tła strony */
+body {
+    background-color: #f0f0f0;
+    font-family: 'Roboto', sans-serif;
+    margin: 20px;
+}
+
+/* Nagłówek aplikacji */
+h1 {
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+    font-weight: 600;
+}
+
+/* Nagłówek podstron */
+h2 {
+    margin-top: 20px;
+}
+
+/* Tabela transakcji */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+table, th, td {
+    border: 1px solid #ccc;
+}
+
+th, td {
+    padding: 10px;
+}
+
+/* Formularze */
+form {
+    margin-top: 10px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+input[type="text"],
+input[type="number"],
+select {
+    width: 100%;
+    padding: 5px;
+    margin-bottom: 10px;
+}
+
+button[type="submit"] {
+    background-color: #333;
+    color: #fff;
+    padding: 5px 10px;
+    border: none;
+    cursor: pointer;
+}
+
+button[type="submit"]:hover {
+    background-color: #555;
+}
+
+/* Linki */
+a {
+    display: inline-block;
+    margin-right: 10px;
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+}
+
+a:hover {
+    color: #555;
+}
