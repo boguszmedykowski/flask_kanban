@@ -1,7 +1,7 @@
 # flask_kanban
 
-Why :
-Kontrola nad pracą: Kanban umożliwia lepszą kontrolę nad przepływem pracy i harmonogramem zadań. Możesz dostosowywać priorytety, przypisywać zadania i śledzić ich status.
+Why :Zarządzanie pracą: Dzięki Kanbanowi zyskujesz pełną kontrolę nad przepływem pracy i harmonogramem zadań. Masz możliwość dostosowywania priorytetów, przypisywania zadań oraz monitorowania ich aktualnego statusu.
+
 
 Eliminacja marnotrawstwa: Kanban pomaga w identyfikowaniu i eliminowaniu opóźnień, nadmiaru pracy i innych rodzajów marnotrawstwa, co przekłada się na bardziej efektywny proces pracy.
 
