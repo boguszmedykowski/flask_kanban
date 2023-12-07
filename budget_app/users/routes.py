@@ -17,8 +17,6 @@ def register():
          db.session.commit()
          flash('Konto utworzone!', 'success')
          return redirect(url_for('users.login'))
-    else:
-        flash('something went wrong, try again', 'error')
 
     return render_template('register.html', form=form)
 

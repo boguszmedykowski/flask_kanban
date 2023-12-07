@@ -22,7 +22,7 @@
     
             <h2 style="text-align: center; color: black; font-size: 65px; font-weight: 500; padding: 10px; word-wrap: break-word">ZALOGUJ</h2>
     
-            <form method="POST" action="" style="text-align: center; padding: 15px 75px;">
+            <form method="POST" action="{{ url_for('users.login') }}" style="text-align: center; padding: 15px 75px;">
                 {{ form.hidden_tag() }}
                 {{ form.username }}
                 {{ form.password }}

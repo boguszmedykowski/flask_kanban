@@ -21,14 +21,30 @@
 
         <h2 style="text-align: center; color: black; font-size: 60px; font-weight: 500; padding: 10px; word-wrap: break-word">REJESTRACJA</h2>
 
-        <form method="POST" action="{{ url_for('users.register') }}" style="text-align: center; padding: 15px 75px;">
+        <form method="post" action="{{ url_for('users.register') }}" style="text-align: center;">
+            {{ form.csrf_token }}
+
+            {% if form.errors %}
+                <div class="alert alert-danger">
+                    <ul>
+                        {% for field, errors in form.errors.items() %}
+                            {% for error in errors %}
+                                <li>{{ error }}</li>
+                            {% endfor %}
+                        {% endfor %}
+                    </ul>
+                </div>
+            {% endif %}
+
             <label for="username">Username:</label>
-            <input type="text" id="username" name="username" required>
-    
+            {{ form.username(class="form-control", required=True) }}
+
             <label for="password">Password:</label>
-            <input type="password" id="password" name="password" required>
-    
-            <button type="submit">Register</button>
+            {{ form.password(class="form-control", required=True) }}
+
+            <br>
+            <br>
+            <button type="submit" class="btn btn-primary" style="display: inline-block; max-width: 350px; text-align: center; padding: 15px 75px; cursor: pointer;color: white ;background-color: #333; font-size: 30px; font-weight: 400; text-decoration: none; word-wrap: break-word" onmouseover="this.style.color='#F17272'" onmouseout="this.style.color='white'">Register</button>
         </form>
 
         {% with messages = get_flashed_messages(with_categories=true) %}
