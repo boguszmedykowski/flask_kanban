@@ -10,7 +10,7 @@ from enum import Enum
 import io
 import csv
 
-# Konfiguracja aplikacji
+# Wstępna Konfiguracja aplikacji
 
 
 class Config:
