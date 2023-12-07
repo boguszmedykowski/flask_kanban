@@ -17,21 +17,34 @@
     <h1>Budget App</h1>
     
     <div class="rectangle">
-        <a href="{{url_for('index')}}" style="display: flex; text-align: start; color: black; font-size: 30px; font-weight: 500; padding: 25px 35px; text-decoration: none; word-wrap: break-word; max-width: fit-content;" onmouseover="this.style.color='#F17272'" onmouseout="this.style.color='black'"> << Home</a>
+        <a href="{{url_for('main.index')}}" style="display: flex; text-align: start; color: black; font-size: 30px; font-weight: 500; padding: 25px 35px; text-decoration: none; word-wrap: break-word; max-width: fit-content;" onmouseover="this.style.color='#F17272'" onmouseout="this.style.color='black'"> << Home</a>
 
         <h2 style="text-align: center; color: black; font-size: 60px; font-weight: 500; padding: 10px; word-wrap: break-word">REJESTRACJA</h2>
 
-        <form method="POST" action="" style="text-align: center; padding: 15px 75px;">
-            {{ form.hidden_tag() }}
-            {{ form.username }}
-            {{ form.password }}
-            {{ form.submit }}
+        <form method="POST" action="{{ url_for('users.register') }}" style="text-align: center; padding: 15px 75px;">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required>
+    
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+    
+            <button type="submit">Register</button>
         </form>
+
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                <ul>
+                    {% for category, message in messages %}
+                        <li class="{{ category }}">{{ message }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        {% endwith %}
 
         <h3 style="text-align: center; color: black;  font-size: 40px; font-weight: 500; padding: 10px; word-wrap: break-word">Masz już konto?</h3>
 
         <div style="text-align: center;">
-            <a href="{{url_for('login')}}" style="display: inline-block; max-width: 350px; text-align: center; padding: 15px 75px; cursor: pointer;color: white ;background-color: #333; font-size: 30px; font-weight: 400; text-decoration: none; word-wrap: break-word" onmouseover="this.style.color='#F17272'" onmouseout="this.style.color='white'">ZALOGUJ</a>
+            <a href="{{url_for('users.login')}}" style="display: inline-block; max-width: 350px; text-align: center; padding: 15px 75px; cursor: pointer;color: white ;background-color: #333; font-size: 30px; font-weight: 400; text-decoration: none; word-wrap: break-word" onmouseover="this.style.color='#F17272'" onmouseout="this.style.color='white'">ZALOGUJ</a>
         </div>
         
     </div>

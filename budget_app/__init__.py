@@ -11,7 +11,7 @@ login_manager.login_view = 'users.login'
 
 def create_app(config_class=Config):
     app = Flask(__name__)
-    app.config.from_object(config_class)
+    app.config.from_object(Config)
 
     with app.app_context():
         initialize_extensions(app)
@@ -19,8 +19,10 @@ def create_app(config_class=Config):
 
         from budget_app.main.routes import main
         from budget_app.transactions.routes import transactions
+        from budget_app.users.routes import users
         app.register_blueprint(main)
         app.register_blueprint(transactions)
+        app.register_blueprint(users)
 
     return app
 

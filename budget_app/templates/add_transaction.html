@@ -7,7 +7,7 @@
 </head>
 <body>
     <h1>Budget App - Dodaj nową transakcję</h1>
-    <form method="post" action="{{ url_for('add_transaction') }}">
+    <form method="post" action="{{ url_for('transactions.add_transaction') }}">
         {{ form.hidden_tag() }}
         
         <label for="title">Tytuł:</label>
@@ -24,6 +24,6 @@
         
         <button type="submit">Dodaj transakcję</button>
     </form>
-    <a href="{{ url_for('dashboard') }}">Powrót do transakcji</a>
+    <a href="{{ url_for('users.dashboard') }}">Powrót do transakcji</a>
 </body>
 </html>

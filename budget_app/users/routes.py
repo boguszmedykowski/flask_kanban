@@ -15,7 +15,8 @@ def register():
          new_user = User(username=form.username.data, password=hashed_password)
          db.session.add(new_user)
          db.session.commit()
-         return redirect(url_for('login'))
+         flash('Konto utworzone!', 'success')
+         return redirect(url_for('users.login'))
     else:
         flash('something went wrong, try again', 'error')
 
@@ -26,10 +27,9 @@ def login():
     form = LoginForm()
     if form.validate_on_submit():
         user = User.query.filter_by(username=form.username.data).first()
-        if user:
-            if bcrypt.check_password_hash(user.password, form.password.data):
-                login_user(user)
-                return redirect(url_for('dashboard'))
+        if user and bcrypt.check_password_hash(user.password, form.password.data):
+            login_user(user)
+            return redirect(url_for('users.dashboard'))
         else:
             flash('Wrong username or password. Please try again.', 'error')
 
@@ -45,18 +45,18 @@ def dashboard():
         print(f"Error retrieving transactions: {e}")
         return "An error occurred while retrieving transactions."
 
-@users.route('/logout', methods=['GET', 'POST'])
+@users.route('/logout')
 @login_required
 def logout():
      logout_user()
-     return redirect(url_for('index'))
+     return redirect(url_for('main.index'))
 
 # Podsumowanie finansowe
-@users.route('/summary')
+@users.route('/summary', methods=['GET', 'POST'])
 @login_required
 def summary():
     total_expense = db.session.query(db.func.sum(Transaction.amount)).filter_by(
         type='Expense').scalar()
     total_income = db.session.query(db.func.sum(Transaction.amount)).filter_by(
         type='Income').scalar()
-    return render_template('summary.html', total_expense=total_expense, total_income=total_income)
+    return render_template('users.summary.html', total_expense=total_expense, total_income=total_income)

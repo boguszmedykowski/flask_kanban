@@ -13,11 +13,9 @@ class RegisterForm(FlaskForm):
     submit = SubmitField("Register")
 
     def validate_username(self, username):
-        existing_user_username = User.query.filter_by(
-            username=username.data).first()
+        existing_user_username = User.query.filter_by(username=username.data)
         if existing_user_username:
-             raise ValidationError(
-                  "There already is a user with that username. Choose a different one.")
+             raise ValidationError("There already is a user with that username. Choose a different one.")
 
 class LoginForm(FlaskForm):
     username = StringField(validators=[InputRequired(), Length(
