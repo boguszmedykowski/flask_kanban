@@ -1,5 +1,5 @@
 from flask import current_app
-from budget import db, login_manager
+from budget_app import db, login_manager
 from flask_login import UserMixin
 import sqlite3
 from enum import Enum

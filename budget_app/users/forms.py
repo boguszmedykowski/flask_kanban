@@ -1,7 +1,8 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, SubmitField
+from wtforms.validators import InputRequired, Length, ValidationError
 from flask_login import current_user
-from budget.models import User
+from budget_app.models import User
 
 class RegisterForm(FlaskForm):
     username = StringField(validators=[InputRequired(), Length(
@@ -27,11 +28,3 @@ class LoginForm(FlaskForm):
         min=4, max=20)], render_kw={"placeholder": "Password"})
     
     submit = SubmitField("Login")
-
-class AddTransactionForm(FlaskForm):
-    title = StringField(validators=[InputRequired(), Length(min=1, max=100)])
-    amount = FloatField(validators=[InputRequired()])
-    type = SelectField(validators=[InputRequired()], choices=[
-        ('Expense', 'Expense'),
-        ('Income', 'Income')
-    ])

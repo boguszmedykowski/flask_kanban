@@ -1,6 +1,9 @@
-from flask import render_template, url_for, flash, redirect, request
+from flask import app, render_template, url_for, flash, redirect, request
 from flask_login import current_user, login_required
+from sqlalchemy.exc import SQLAlchemyError
 from budget_app import db
+from transactions.forms import AddTransactionForm
+from budget_app.models import Transaction, TransactionType
 
 # Dodawanie transakcji
 @app.route('/add_transaction', methods=['GET', 'POST'])
@@ -24,7 +27,7 @@ def add_transaction():
 
             flash('Transaction added successfully!', 'success')
             return redirect(url_for('dashboard'))
-
+        
         except SQLAlchemyError as e:
             print(f"Error: {e}")
             db.session.rollback()
