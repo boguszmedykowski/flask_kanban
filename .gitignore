@@ -3,7 +3,7 @@ __pycache__/
 *.py[cod]
 *$py.class
 
-# C extensions
+# C Wyjątki
 *.so
 
 # Distribution / packaging
@@ -27,8 +27,8 @@ share/python-wheels/
 MANIFEST
 
 # PyInstaller
-#  Usually these files are written by a python script from a template
-#  before PyInstaller builds the exe, so as to inject date/other infos into it.
+#  Zazwyczaj te pliki są tworzone przez skrypt w języku Python na podstawie szablonu
+#  Zanim PyInstaller utworzy plik wykonywalny (exe), skrypt w języku Python wstrzykuje w niego datę lub inne informacje.
 *.manifest
 *.spec
 
