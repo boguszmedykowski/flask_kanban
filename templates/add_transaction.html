@@ -1,27 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Ustawienia kodowania znaków -->
     <meta charset="UTF-8">
+    <!-- Tytuł strony -->
     <title>Budget App - Dodaj nową transakcję</title>
+    <!-- Dołączenie arkusza stylów CSS -->
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
+    <!-- Nagłówek strony -->
     <h1>Budget App - Dodaj nową transakcję</h1>
+    <!-- Formularz dodawania nowej transakcji -->
     <form method="post" action="{{ url_for('add_transaction') }}">
+        <!-- Pole do wprowadzenia tytułu transakcji -->
         <label for="title">Tytuł:</label>
         <input type="text" id="title" name="title" required>
         
+        <!-- Pole do wprowadzenia kwoty transakcji -->
         <label for="amount">Kwota:</label>
         <input type="number" id="amount" name="amount" step="0.01" required>
         
+        <!-- Pole wyboru typu transakcji (wydatek/przychód) -->
         <label for="type">Typ:</label>
         <select id="type" name="type">
             <option value="Expense">Wydatek</option>
             <option value="Income">Przychód</option>
         </select>
         
+        <!-- Przycisk do dodawania transakcji -->
         <button type="submit">Dodaj transakcję</button>
     </form>
+    
+    <!-- Odnośnik do powrotu do strony z transakcjami -->
     <a href="{{ url_for('index') }}">Powrót do transakcji</a>
 </body>
 </html>
