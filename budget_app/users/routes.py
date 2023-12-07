@@ -1,9 +1,12 @@
-from flask import render_template, url_for, flash, redirect
-from flask_login import login_user, current_user, logout_user, login_required
+from flask import render_template, url_for, flash, redirect, Blueprint
+from flask_login import login_user, logout_user, login_required
 from budget_app import db, bcrypt
 from budget_app.models import User, Transaction
+from budget_app.users.forms import RegisterForm, LoginForm
 
-@app.route('/register', methods=['GET', 'POST'])
+users = Blueprint('users', __name__)
+
+@users.route('/register', methods=['GET', 'POST'])
 def register():
     form = RegisterForm()
 
@@ -18,7 +21,7 @@ def register():
 
     return render_template('register.html', form=form)
 
-@app.route('/login', methods=['GET', 'POST'])
+@users.route('/login', methods=['GET', 'POST'])
 def login():
     form = LoginForm()
     if form.validate_on_submit():
@@ -32,7 +35,7 @@ def login():
 
     return render_template('login.html', form=form)
 
-@app.route('/dashboard', methods=['GET', 'POST'])
+@users.route('/dashboard', methods=['GET', 'POST'])
 @login_required
 def dashboard():
     try:
@@ -42,8 +45,18 @@ def dashboard():
         print(f"Error retrieving transactions: {e}")
         return "An error occurred while retrieving transactions."
 
-@app.route('/logout', methods=['GET', 'POST'])
+@users.route('/logout', methods=['GET', 'POST'])
 @login_required
 def logout():
      logout_user()
      return redirect(url_for('index'))
+
+# Podsumowanie finansowe
+@users.route('/summary')
+@login_required
+def summary():
+    total_expense = db.session.query(db.func.sum(Transaction.amount)).filter_by(
+        type='Expense').scalar()
+    total_income = db.session.query(db.func.sum(Transaction.amount)).filter_by(
+        type='Income').scalar()
+    return render_template('summary.html', total_expense=total_expense, total_income=total_income)

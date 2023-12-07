@@ -11,13 +11,20 @@ login_manager.login_view = 'users.login'
 
 def create_app(config_class=Config):
     app = Flask(__name__)
-    app.config.from_object(Config)
+    app.config.from_object(config_class)
 
+    with app.app_context():
+        initialize_extensions(app)
+        db.create_all()
+
+        from budget_app.main.routes import main
+        from budget_app.transactions.routes import transactions
+        app.register_blueprint(main)
+        app.register_blueprint(transactions)
+
+    return app
+
+def initialize_extensions(app):
     db.init_app(app)
     bcrypt.init_app(app)
     login_manager.init_app(app)
-        
-    return app
-
-    with app.app_context():
-        db.create_all()

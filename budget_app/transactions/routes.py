@@ -1,12 +1,14 @@
-from flask import app, render_template, url_for, flash, redirect, request
+from flask import render_template, url_for, flash, redirect, request, Blueprint
 from flask_login import current_user, login_required
 from sqlalchemy.exc import SQLAlchemyError
 from budget_app import db
-from transactions.forms import AddTransactionForm
+from budget_app.transactions.forms import AddTransactionForm
 from budget_app.models import Transaction, TransactionType
 
+transactions = Blueprint('transactions', __name__)
+
 # Dodawanie transakcji
-@app.route('/add_transaction', methods=['GET', 'POST'])
+@transactions.route('/add_transaction', methods=['GET', 'POST'])
 @login_required
 def add_transaction():
     form = AddTransactionForm()
@@ -36,7 +38,7 @@ def add_transaction():
     return render_template('add_transaction.html', form=form)
 
 # Usuwanie transakcji
-@app.route('/delete_transaction/<int:transaction_id>', methods=['POST'])
+@transactions.route('/delete_transaction/<int:transaction_id>', methods=['POST'])
 @login_required
 def delete_transaction(transaction_id):
     try:
@@ -51,7 +53,7 @@ def delete_transaction(transaction_id):
     return redirect(url_for('dashboard'))
 
 # Edycja transakcji
-@app.route('/edit_transaction/<int:transaction_id>', methods=['GET', 'POST'])
+@transactions.route('/edit_transaction/<int:transaction_id>', methods=['GET', 'POST'])
 @login_required
 def edit_transaction(transaction_id):
     transaction = Transaction.query.get_or_404(transaction_id)
@@ -71,7 +73,7 @@ def edit_transaction(transaction_id):
     return render_template('edit_transaction.html', transaction=transaction)
 
 # Filtracja transakcji
-@app.route('/filter_transactions', methods=['GET', 'POST'])
+@transactions.route('/filter_transactions', methods=['GET', 'POST'])
 def filter_transactions():
     if request.method == 'POST':
         transaction_type = request.form['type']

@@ -1,7 +1,5 @@
-from flask import current_app
-from budget_app import db, login_manager
+from budget_app import login_manager, db
 from flask_login import UserMixin
-import sqlite3
 from enum import Enum
 
 @login_manager.user_loader
