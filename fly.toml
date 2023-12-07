@@ -1,9 +1,10 @@
+# Nazwa aplikacji
 app = "your-budget-app"
-
+# Sygnał zakończenia procesu
 kill_signal = "SIGINT"
 kill_timeout = 5
 processes = []
-
+# Sekcja zmiennych środowiskowych
 [env]
   FLET_SERVER_PORT = "8080"
   FLET_FORCE_WEB_VIEW = "true"

@@ -10,7 +10,7 @@ from enum import Enum
 import io
 import csv
 
-# Konfiguracja aplikacji
+# Wstępna Konfiguracja aplikacji
 
 
 class Config:
@@ -83,7 +83,7 @@ class LoginForm(FlaskForm):
 with app.app_context():
     db.create_all()
 
-# Strona główna
+# Strona Główna 
 
 
 @app.route('/')
