@@ -128,7 +128,8 @@ def login():
 @app.route('/dashboard', methods=['GET', 'POST'])
 @login_required
 def dashboard():
-    return render_template('dashboard.html')
+    transactions = Transaction.query.all()
+    return render_template('dashboard.html', transactions=transactions)
 
 
 @app.route('/logout', methods=['GET', 'POST'])
@@ -156,7 +157,7 @@ def add_transaction():
         except ValueError:
             print("Invalid data")
 
-        return redirect(url_for('index'))
+        return redirect(url_for('dashboard'))
 
     # Obsługa żądań GET
     return render_template('add_transaction.html')
@@ -176,7 +177,7 @@ def delete_transaction(transaction_id):
         print(f"Error: {e}")
         db.session.rollback()
 
-    return redirect(url_for('index'))
+    return redirect(url_for('dashboard'))
 
 # Edycja transakcji
 
@@ -190,7 +191,7 @@ def edit_transaction(transaction_id):
             transaction.amount = float(request.form['amount'])
             transaction.type = TransactionType(request.form['type'])
             db.session.commit()
-            return redirect(url_for('index'))
+            return redirect(url_for('dashboard'))
         except SQLAlchemyError as e:
             print(f"Error: {e}")
             db.session.rollback()
