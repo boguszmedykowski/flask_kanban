@@ -17,5 +17,5 @@ Wzmacniana Świadomość Finansowa: Aplikacja zwiększa świadomość finansową
 Aplikacja Zarządzania Budżetem Domowym to narzędzie do efektywnego planowania, śledzenia i zarządzania finansami w ramach budżetu domowego.
 
 **Jak:**
-Aplikację opowiemy przy użyciu frameworka Flask, a wdrożenie przeprowadzimy na platformie AWS.
+Aplikację opowiemy przy użyciu frameworka Flask, a wdrożenie przeprowadzimy na platformie fly.io
 
