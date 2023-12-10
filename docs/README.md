@@ -1,23 +1,21 @@
-# Flask_Kanban
+# Aplikacja_Zarządzania_Budżetem_Domowym
 
 **Dlaczego:**
-Kanban zapewnia kontrolę nad pracą, umożliwiając lepszy nadzór nad przepływem pracy i harmonogramem zadań. Dzięki możliwości dostosowywania priorytetów, przypisywania zadań i śledzenia ich statusu.
+Zarządzanie Finansami: Aplikacja umożliwia skuteczne zarządzanie finansami domowymi, umożliwiając śledzenie przychodów, wydatków i budżetu.
 
-Eliminuje marnotrawstwo, identyfikując i usuwając opóźnienia, nadmiar pracy oraz inne formy marnotrawstwa, co przekłada się na bardziej efektywny proces pracy.
+Planowanie Budżetu: Pozwala na planowanie budżetu na różne kategorie wydatków, co ułatwia kontrolę nad finansami i oszczędzanie.
 
-Jest elastycznym narzędziem, które dostosowuje się do różnych rodzajów projektów i zespołów, umożliwiając personalizację tablicy Kanban zgodnie z indywidualnymi potrzebami.
+Eliminacja Marnotrawstwa Finansowego: Pomaga identyfikować niepotrzebne wydatki i eliminować marnotrawstwo finansowe, przyczyniając się do lepszego gospodarowania środkami.
 
-Wzmacnia komunikację, umożliwiając wszystkim członkom zespołu dostęp do aktualnych informacji na temat pracy, co z kolei poprawia komunikację i współpracę.
+Monitorowanie Długoterminowe: Dzięki aplikacji możliwe jest śledzenie długoterminowych celów finansowych i monitorowanie postępu w ich osiąganiu.
 
-Promuje ciągłe doskonalenie procesów pracy poprzez regularną analizę wyników i wprowadzanie ulepszeń.
+Raportowanie Finansowe: Generuje raporty finansowe, co ułatwia zrozumienie wzorców wydatków i podejmowanie świadomych decyzji finansowych.
 
-Ułatwia zarządzanie projektami, planowanie zadań i monitorowanie postępu, co przekłada się na zwiększoną produktywność i efektywność.
-
-Warto zaznaczyć, że Kanban znajduje zastosowanie nie tylko w projekach IT, ale także w różnych branżach i dziedzinach, gdzie istnieje potrzeba zarządzania pracą i przepływem zadań.
+Wzmacniana Świadomość Finansowa: Aplikacja zwiększa świadomość finansową poprzez klarowne prezentowanie informacji dotyczących finansów domowych.
 
 **Co:**
-Tablica Kanban to narzędzie wizualizacji pracy, gdzie zadania są reprezentowane jako karty lub karty zadań, umożliwiające śledzenie przepływu pracy i efektywne zarządzanie nią.
+Aplikacja Zarządzania Budżetem Domowym to narzędzie do efektywnego planowania, śledzenia i zarządzania finansami w ramach budżetu domowego.
 
 **Jak:**
-Wykorzystamy framework Flask, a deployement zostanie przeprowadzony na platformie AWS.
+Aplikację opowiemy przy użyciu frameworka Flask, a wdrożenie przeprowadzimy na platformie AWS.
 
