@@ -12,3 +12,5 @@
 * `git commit -a -m "tresc commitów"`
 * `git push origin nazwa_brancha` (jeśli wysłałeś mi klucze ssh)
 * zmerguj branch
+
+Aplikacja dostępna pod adresem: https://flask-kanban.fly.dev/
