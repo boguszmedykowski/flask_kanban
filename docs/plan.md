@@ -21,5 +21,5 @@ tydz 3              | march v1             |                    |
 tydz 4              | march v1             |                    |
 tydz 5              | march v1             |                    |
 tydz 6              | march v1             |                    |
-tydz 7     zrobienie backendu         | march v1             |                    |
-tydz 8     Wykonanie front end i dokumentacji        | march v1             |                    | xx
+tydz 7              | march v1             |  Wykonanie   Backend|
+tydz 8              | march v1             |   Wykonanie front end i dokumentacji                 | xx
